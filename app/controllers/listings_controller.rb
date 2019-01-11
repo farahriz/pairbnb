@@ -36,6 +36,17 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      redirect_to listing_path(@listing), notice: "Listing updated." # or redirect_to @listing
+    else
+      render :edit, error: "Listing couldn't update, please try again."
+    end
+  end
+
+
   private
   def listing_params
     params.require(:listing).permit(:name, :desctiption, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags)
