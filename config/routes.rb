@@ -13,7 +13,9 @@ root 'welcome#index'
   end
 
 
-  resources :listings, only: [:create, :edit, :update, :new, :index, :destroy]
+  resources :listings, only: [:create, :edit, :show, :update, :new, :index, :destroy]
+
+  get 'tags/:tag', to: 'posts#index', as: "tag"
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

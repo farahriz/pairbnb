@@ -1,6 +1,12 @@
 class ListingsController < ApplicationController
   def index
-  	@listings = Listing.all
+
+    if params[:tag]
+      @listings = Listing.tagged_with(params[:tag])
+    else
+  	  @listings = Listing.all
+    end
+
   end
 
   def edit
@@ -14,14 +20,20 @@ class ListingsController < ApplicationController
 
   def create
   	# byebug
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listings.new(listing_params)
 
     if @listing.save
-
+      redirect_to listing_path(@listing), notice: "Your listing has successfully created"
 
     else
       redirect back
+      # render :new, error: "Piglet wasn't created, please try again." # Investigate getting the error messages from your object errors and sending them as a flash message!
     end
+
+  end
+
+  def show
+    @listing = Listing.find(params[:id])
   end
 
   private

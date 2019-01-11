@@ -1,4 +1,9 @@
+<%if signed_in?%>
+	<%= link_to "Create new listing", new_listing_path, :class => "btn btn-outline-warning p-1 col-12" %>
+<%end%>
+
 <h1>Listings#index</h1>
 <p>The tags would go here</p>
+
 
 <p>This is where I would list out all the possible listings</p>
