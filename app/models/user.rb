@@ -11,12 +11,14 @@ class User < ApplicationRecord
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(
-     name: auth_hash["info"]["name"],
-     email: auth_hash["info"]["email"]
+      name: auth_hash["info"]["name"],
+      email: auth_hash["info"]["email"],
+      password: SecureRandom.hex(10)
     )
     user.authentications << authentication
     return user
   end
+
 
   # grab google to access google for user data
   def google_token
@@ -25,15 +27,6 @@ class User < ApplicationRecord
   end
 
 
-  def self.create_with_auth_and_hash(authentication, auth_hash)
-    user = self.create!(
-      name: auth_hash["info"]["name"],
-      email: auth_hash["info"]["email"],
-      password: SecureRandom.hex(10)
-    )
-    user.authentications << authentication
-    return user
-  end
 
 
 end
