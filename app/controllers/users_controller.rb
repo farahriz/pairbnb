@@ -17,8 +17,7 @@ class UsersController < ApplicationController
 
   def new
   	# byebug
-    @user = User.new(user_params)
-    render template: "users/new"
+    @user = User.new
   end
 
   def create
@@ -27,9 +26,9 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in @user
-      redirect_back_or url_after_create
+      redirect_to root_path
     else
-      render template: "users/new"
+      redirect back
     end
   end
 
