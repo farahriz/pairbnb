@@ -1,0 +1,9 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+
+<h1>Welcome to PairBnB</h1>  
+
+<%= form_for(User.find(params[:id])) do |f|%>
+	<%= f.text_field :email %>
+	<%= f.submit %>
+<%end%>
