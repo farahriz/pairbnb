@@ -7,3 +7,6 @@
 
 
 <p>This is where I would list out all the possible listings</p>
+<%@listings.each do |list|%>
+	<p><%= "#{list.name}"%></p>
+<%end%>
