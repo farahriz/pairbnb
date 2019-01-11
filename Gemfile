@@ -6,6 +6,12 @@ ruby '2.5.3'
 # User Clearance for user management
 gem 'clearance'
 
+
+# Google authorisaton for log in
+gem "omniauth"
+gem "omniauth-google-oauth2"
+
+
 # Privacy protection
 gem "figaro"
 
