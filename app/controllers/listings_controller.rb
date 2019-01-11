@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   def index
     if params[:tag]
-      @listings = Listing.tagged_with(params[:tag])
+      @listings = Listing.tagged_with(params[:tag].titleize)
     else
   	  @listings = Listing.all
     end
