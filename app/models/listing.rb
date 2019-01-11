@@ -2,6 +2,8 @@ class Listing < ApplicationRecord
 	has_many :taggings
 	has_many :tags, through: :taggings
 
+	belongs_to :user
+
 	#Helper functions to extract tags from form
 	def all_tags=(names)
 	  self.tags = names.split(",").map do |name|

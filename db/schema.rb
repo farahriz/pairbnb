@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_060310) do
+ActiveRecord::Schema.define(version: 2019_01_11_063310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_060310) do
     t.integer "max_guests"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_060310) do
   end
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "listings", "users"
   add_foreign_key "taggings", "listings"
   add_foreign_key "taggings", "tags"
 end
