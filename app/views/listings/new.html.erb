@@ -1,10 +1,11 @@
-<h1>This is where you would edit an existing listing form</h1>
+<h1>Listings#new</h1>
+<p>Find me in app/views/listings/new.html.erb</p>
 
   <%= form_with model: @listing, local: true do |form| %>
     <%= render partial: '/listings/form', object: form %>
 
     <div class="submit-field">
-      <%= form.submit "Edit listing information" %>
+      <%= form.submit "Create new listing" %>
     </div>
 
   <% end %>
