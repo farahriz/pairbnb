@@ -1,6 +1,9 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
 
-
-<%= link_to 'Register for a new account', sign_up_path, { :class => "btn btn-info" }  %>
-<%= link_to 'Sign in with Google', "/auth/google_oauth2", { :class => "btn btn-danger" }  %>
+<%if signed_in?%>
+	<%= link_to t(".sign_out"), sign_out_path, :class => "nav-link", method: :delete, :class => "btn btn-outline-danger"%>
+<%else%>
+	<%= link_to 'Register for a new account', sign_up_path, :class => "btn btn-info"  %>
+	<%= link_to 'Sign in with Google', "/auth/google_oauth2", :class => "btn btn-danger" %>
+<%end%>
