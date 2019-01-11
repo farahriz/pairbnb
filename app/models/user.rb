@@ -18,7 +18,7 @@ class User < ApplicationRecord
     user.authentications << authentication
     return user
   end
-
+  
 
   # grab google to access google for user data
   def google_token
