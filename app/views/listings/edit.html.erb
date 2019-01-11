@@ -1,10 +1,24 @@
-<h1>This is where you would edit an existing listing form</h1>
-
-  <%= form_with model: @listing, local: true do |form| %>
-    <%= render partial: '/listings/form', object: form %>
-
-    <div class="submit-field">
-      <%= form.submit "Edit listing information" %>
+<div class="container col-sm-10">
+  
+  <div class="card border-light">
+    
+    <div class="card-header">
+      <h2>Edit your listing</h2>
     </div>
 
-  <% end %>
+    <div class="card-body">
+	  <%= form_with model: @listing, local: true do |form| %>
+	    <%= render partial: '/listings/form', object: form %>
+
+		    <div class="submit-field p-0 m-0">
+		      <%= form.submit "Edit new listing", :class => "btn btn-outline-danger col-12"  %>
+		    </div>
+
+	  <% end %>
+
+ 
+    </div> <!-- End of card body -->
+
+  </div> <!-- End of card div -->
+
+</div> <!-- End of container div -->

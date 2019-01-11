@@ -1,42 +1,43 @@
-<div class="name-field">
-  <%= form.label :name %>
-  <%= form.text_field :name, id: :name %>
+<div class="name-field form-group row">
+  <%= form.label :name, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :name, id: :name, :class => "col-sm-8 form-control form-control-sm" %>
 </div>
 
 
-<div class="description-field">
-  <%= form.label :description %>
-  <%= form.text_field :description, id: :description %>
+<div class="description-field form-group row">
+  <%= form.label :description, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :description, id: :description, :class => "col-sm-8 form-control form-control-sm" %>
 </div>
 
-<div class="location-field">
-  <%= form.label :location %>
-  <%= form.text_field :location, id: :location %>
-</div>
-
-
-<div class="policy-field">
-  <%= form.label :policy %>
-  <%= form.text_field :policy, id: :policy %>
+<div class="location-field form-group row">
+  <%= form.label :location, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :location, id: :location, :class => "col-sm-8 form-control form-control-sm" %>
 </div>
 
 
-<div class="num_bedroom-field">
-  <%= form.label :num_bedroom %>
-  <%= form.number_field :num_bedroom, id: :num_bedroom %>
+
+
+<div class="num_bedroom-field form-group row">
+  <%= form.label :"Number of bedrooms", :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.number_field :num_bedroom, id: :num_bedroom, :class => "col-sm-8 form-control form-control-sm", min: 1 %>
 </div>
 
-<div class="num_bed-field">
-  <%= form.label :num_bed %>
-  <%= form.number_field :num_bed, id: :num_bed %>
+<div class="num_bed-field form-group row">
+  <%= form.label :"Number of beds", :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.number_field :num_bed, id: :num_bed, :class => "col-sm-8 form-control form-control-sm", min: 1 %>
 </div>
 
-<div class="num_bathroom-field">
-  <%= form.label :num_bathroom %>
-  <%= form.number_field :num_bathroom, id: :num_bathroom %>
+<div class="num_bathroom-field form-group row">
+  <%= form.label :"Number of bathrooms", :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.number_field :num_bathroom, id: :num_bathroom, :class => "col-sm-8 form-control form-control-sm", min: 1 %>
 </div>
 
-<div class="max_guests-field">
-  <%= form.label :max_guests %>
-  <%= form.number_field :max_guests, id: :max_guests %>
+<div class="max_guests-field form-group row">
+  <%= form.label :"Maximum number of guests", :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.number_field :max_guests, id: :max_guests, :class => "col-sm-8 form-control form-control-sm", min: 1 %>
+</div>
+
+<div class="policy-field form-group row">
+  <%= form.label :"Cancellation policy and house rules", :class => "col-form-label col-form-label-sm"%>
+  <%= form.text_field :policy, id: :policy, :class => "form-control form-control-sm" %>
 </div>

@@ -13,7 +13,7 @@ root 'welcome#index'
   end
 
 
-  resources :listings, only: [:create, :new, :index]
+  resources :listings, only: [:create, :edit, :update, :new, :index, :destroy]
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
