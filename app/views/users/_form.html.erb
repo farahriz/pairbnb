@@ -1,27 +1,27 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, id: :email, class: :email %>
+<div class="text-field form-group row">
+  <%= form.label :email, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :email, id: :email, class: :email, :class => "col-sm-7 form-control form-control-sm" %>
 </div>
 
-<div class="handle-field">
-  <%= form.label :handle %>
-  <%= form.text_field :handle, id: :handle %>
-</div>
-
-
-<div class="first_name-field">
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name, id: :first_name %>
+<div class="handle-field form-group row">
+  <%= form.label :handle, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :handle, id: :handle, :class => "col-sm-7 form-control form-control-sm" %>
 </div>
 
 
-<div class="last_name-field">
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name, id: :first_name %>
+<div class="first_name-field form-group row">
+  <%= form.label :first_name, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :first_name, id: :first_name, :class => "col-sm-7 form-control form-control-sm" %>
 </div>
 
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password, id: :password %>
+<div class="last_name-field form-group row">
+  <%= form.label :last_name, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.text_field :last_name, id: :first_name, :class => "col-sm-7 form-control form-control-sm" %>
+</div>
+
+
+<div class="password-field form-group row">
+  <%= form.label :password, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.password_field :password, id: :password, :class => "col-sm-7 form-control form-control-sm" %>
 </div>

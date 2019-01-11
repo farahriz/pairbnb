@@ -15,15 +15,18 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item">
         <% if signed_in? -%>
           <%= link_to t(".sign_out"), sign_out_path, :class => "nav-link", method: :delete %>
         <% else -%>
+          <%= link_to t(".sign_up"), sign_up_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to t(".sign_in"), sign_in_path, :class => "nav-link" %>
         <% end -%>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Browse Listings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
@@ -36,11 +39,6 @@
   </div>
 </nav>
 
-
-  <div id="header">
-
-  </div>
-
   <div id="flash">
     <% flash.each do |key, value| -%>
       <div id="flash_<%= key %>"><%=h value %></div>
@@ -48,5 +46,6 @@
   </div>
 
   <%= yield %>
+
 </body>
 </html>
