@@ -3,10 +3,17 @@
 <%end%>
 
 <h1>Listings#index</h1>
-<p>The tags would go here</p>
+<div id="top-tag-display">
+	<h5>Tags</h5>
+	<% Tag.all.each do |tag| %>
+		<%if tag.taggings.length != 0%>
+			<span class="btn btn-outline-info"><%= tag.name %></span>
+		<%end%>
+	<% end %>
+</div>
 
 
-<p>This is where I would list out all the possible listings</p>
+
 
 <section id="listings-cards">
 	<div class="row match-height w-100">
