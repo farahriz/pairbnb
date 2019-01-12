@@ -1,0 +1,26 @@
+<div class="container col-sm-10">
+  
+  <div class="card border-light">
+    
+    <div class="card-header">
+      <h2>Are you sure you want to delete this listing?</h2>
+    </div>
+
+    <div class="card-body">
+	  <%= form_with model: @listing, local: true do |form| %>
+    <fieldset disabled>
+      
+      <%= render partial: '/listings/form', object: form %>
+
+    </fieldset>
+        <div class="submit-field p-0 m-0">
+          <%= form.submit "Edit this listing", :class => "btn btn-outline-danger col-12"  %>
+        </div>
+
+	  <% end %>
+
+    </div> <!-- End of card body -->
+
+  </div> <!-- End of card div -->
+
+</div> <!-- End of container div -->

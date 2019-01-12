@@ -13,7 +13,7 @@ root 'welcome#index'
   end
 
 
-  resources :listings, only: [:create, :edit, :show, :update, :new, :index, :destroy]
+  resources :listings, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
 
   get 'tags/:tag', to: 'listings#index', as: "tag"
 

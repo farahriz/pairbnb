@@ -1,4 +1,7 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only:[:edit, :update, :delete, :destroy, :show]
+
+
   def index
     if params[:tag]
       @listings = Listing.tagged_with(params[:tag].titleize)
@@ -9,11 +12,9 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find(params[:id])
   end
 
   def new
-  	# byebug
     @listing = Listing.new
   end
 
@@ -31,13 +32,12 @@ class ListingsController < ApplicationController
 
   end
 
-  def show
-    @listing = Listing.find(params[:id])
+  def show    
   end
 
 
   def update
-    @listing = Listing.find(params[:id])
+    
     if @listing.update(listing_params)
       redirect_to listing_path(@listing), notice: "Listing updated." # or redirect_to @listing
     else
@@ -45,8 +45,19 @@ class ListingsController < ApplicationController
     end
   end
 
+  def destroy
+    @listing.taggings.each do |tagging|
+      tagging.destroy
+    end
+    @listing.destroy
+    redirect_to listings_path, notice: "Your listing was successfully deleted"
+  end
 
   private
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
+
   def listing_params
     params.require(:listing).permit(:name, :description, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags)
   end
