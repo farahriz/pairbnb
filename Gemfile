@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+#Styling
+gem 'bootstrap'
+gem 'jquery-rails'
+
+
 # User Clearance for user management
 gem 'clearance'
 

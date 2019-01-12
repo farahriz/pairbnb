@@ -1,22 +1,24 @@
 <%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+  <div class="text-field form-group row">
+    <%= form.label :email, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+    <%= form.text_field :email, type: 'email', :class => "col-sm-7 form-control form-control-sm" %>
   </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+  <div class="password-field form-group row">
+    <%= form.label :password, :class => "col-sm-4 col-form-label col-form-label-sm" %>
+    <%= form.password_field :password , :class => "col-sm-7 form-control form-control-sm"%>
   </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
+  <div class="submit-field container col-sm-12 p-2">
+    <%= form.submit "Sign in" , :class => "btn btn-info col-12" %>
+    <%= link_to 'Sign in with Google', "/auth/google_oauth2", { :class => "btn btn-danger col-12" }  %>
   </div>
 
-  <div class="other-links">
+  <div class="other-links container col-sm-12 p-2">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
+      <%= link_to t(".sign_up"), sign_up_path, :class => "btn btn-primary col-12" %>
     <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
+
+    <%= link_to t(".forgot_password"), new_password_path, :class => "btn btn-dark col-12" %>
   </div>
 <% end %>

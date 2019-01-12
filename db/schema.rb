@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_050700) do
+ActiveRecord::Schema.define(version: 2019_01_11_063310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,36 @@ ActiveRecord::Schema.define(version: 2019_01_11_050700) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "location"
+    t.string "policy"
+    t.integer "num_bedroom"
+    t.integer "num_bed"
+    t.integer "num_bathroom"
+    t.integer "max_guests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_taggings_on_listing_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +70,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_050700) do
   end
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "listings", "users"
+  add_foreign_key "taggings", "listings"
+  add_foreign_key "taggings", "tags"
 end

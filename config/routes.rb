@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'listings/index'
+  get 'listings/create'
 root 'welcome#index'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -9,6 +11,11 @@ root 'welcome#index'
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
+
+
+  resources :listings, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
+
+  get 'tags/:tag', to: 'listings#index', as: "tag"
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

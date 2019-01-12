@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :authentications, dependent: :destroy
+  has_many :listings
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(

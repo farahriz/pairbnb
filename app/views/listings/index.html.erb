@@ -1,0 +1,42 @@
+<%if signed_in?%>
+	<%= link_to "Create new listing", new_listing_path, :class => "btn btn-outline-warning p-1 col-12" %>
+<%end%>
+
+<h1>Listings#index</h1>
+<div id="top-tag-display">
+	<h5>Tags</h5>
+	<% Tag.all.each do |tag| %>
+		<%if tag.taggings.length != 0%>
+			<span class="btn btn-outline-info"><%= tag.name %></span>
+		<%end%>
+	<% end %>
+</div>
+
+
+
+
+<section id="listings-cards">
+	<div class="row match-height w-100">
+		<%@listings.each do |list|%>
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+				<div class="card">
+					<div class="card-content">
+						<!-- An image would go here in an img tag -->
+						<div class="card-body">
+							<h5 class="card-title">
+								<%=link_to "#{list.name}", listing_path(list) %>
+							</h5>
+							<p class="card-text">
+								<%= "#{list.description}"%>
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				
+		</div>
+		<%end%>
+	</div>
+
+
+</section>

@@ -1,0 +1,36 @@
+<h1>Show one listing</h1>
+
+
+
+<div class="container col-sm-10">
+  <div class="container">
+    <h3><%=@listing.name %></h3>
+    <h5><%=@listing.location%></h5>
+  </div>
+
+  <div id="quick-stats" class="container d-flex justify-content-between">
+    <span><%=@listing.max_guests %> guests</span>
+    <span><%=@listing.num_bed %> beds</span>
+    <span><%=@listing.num_bedroom %> bedrooms</span>
+    <span><%=@listing.num_bathroom %> bathrooms</span>
+  </div> 
+
+  <div class="container">
+    <h5>Description</h5>
+    <%=@listing.description%>
+  </div>
+
+  <div class="container">
+    <h5>Cancellation policies and house rules</h5>
+    <%=@listing.policy%>
+  </div>
+
+    <div class="tags container">
+      <strong>Tags:</strong> <%=@listing.all_tags %>
+    </div>
+
+<%if signed_in? && @listing.user == current_user %>
+  <%= link_to "Edit this listing", edit_listing_path(@listing), :class => "btn btn-outline-warning col-12" %>  
+<%end%>
+
+</div> <!-- End of container div -->
