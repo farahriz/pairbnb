@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only:[:edit, :update, :delete, :destroy, :show]
 
-
   def index
     if params[:tag]
       @listings = Listing.tagged_with(params[:tag].titleize)
@@ -59,7 +58,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags)
+    params.require(:listing).permit(:name, :description, :price, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags)
   end
 
 end

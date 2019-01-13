@@ -34,6 +34,11 @@
   <%= form.number_field :max_guests, id: :max_guests, :class => "col-sm-8 form-control form-control-sm", min: 1 %>
 </div>
 
+<div class="price-field form-group row">
+  <%= form.label :"Price per night", :class => "col-sm-4 col-form-label col-form-label-sm" %>
+  <%= form.number_field :price, id: :price, :class => "col-sm-8 form-control form-control-sm" %>
+</div>
+
 
 <div class="tags-field form-group row">
   <%= form.label :"Tags", :class => "col-sm-4 col-form-label col-form-label-sm" %>  
