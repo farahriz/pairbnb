@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only:[:edit, :update, :delete, :destroy, :show]
 
-
   def index
     if params[:tag]
       @listings = Listing.tagged_with(params[:tag].titleize)

@@ -10,7 +10,7 @@
 tag = {}
 ActiveRecord::Base.transaction do
 	20.times do
-		tag['name'] = Faker::Hipster.words
+		tag['name'] = Faker::Hipster.word.titleize
 		Tag.create(tag)
 	end
 end
