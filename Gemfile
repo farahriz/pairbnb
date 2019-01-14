@@ -6,6 +6,9 @@ ruby '2.5.3'
 #Seeding
 gem 'faker'
 
+#Pagination
+gem 'will_paginate'
+
 #Styling
 gem 'bootstrap'
 gem 'jquery-rails'
