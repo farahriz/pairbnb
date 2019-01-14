@@ -4,6 +4,8 @@ class Listing < ApplicationRecord
 
 	belongs_to :user
 
+	mount_uploaders :avatars, AvatarUploader
+
 	#Helper functions to extract tags from form
 	def all_tags=(names)
 	  self.tags = names.titleize.split(",").map do |name|
