@@ -3,9 +3,9 @@ class ListingsController < ApplicationController
 
   def index
     if params[:tag]
-      @listings = Listing.tagged_with(params[:tag].titleize)
+      @listings = Listing.tagged_with(params[:tag].titleize).paginate(:page => params[:page])
     else
-  	  @listings = Listing.all
+      @listings = Listing.page(params[:page]).order('created_at DESC')
     end
 
   end
@@ -20,6 +20,7 @@ class ListingsController < ApplicationController
   def create
   	# byebug
     @listing = current_user.listings.new(listing_params)
+
 
     if @listing.save
       redirect_to listing_path(@listing), notice: "Your listing has successfully created"
