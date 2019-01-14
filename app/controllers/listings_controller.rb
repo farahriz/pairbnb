@@ -11,6 +11,10 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    if not_allowed?
+        flash[:notice] = "Sorry. You are not allowed to perform this action."
+        return redirect_to listing_path(@listing), notice: "Sorry. You do not have the permission to edit a listing that you didn't post yourself."
+    end
   end
 
   def new
@@ -20,7 +24,6 @@ class ListingsController < ApplicationController
   def create
   	# byebug
     @listing = current_user.listings.new(listing_params)
-
 
     if @listing.save
       redirect_to listing_path(@listing), notice: "Your listing has successfully created"
@@ -36,8 +39,7 @@ class ListingsController < ApplicationController
   end
 
 
-  def update
-    
+  def update 
     if @listing.update(listing_params)
       redirect_to listing_path(@listing), notice: "Listing updated." # or redirect_to @listing
     else
@@ -46,11 +48,16 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    @listing.taggings.each do |tagging|
-      tagging.destroy
+    if not_allowed?
+        flash[:notice] = "Sorry. You are not allowed to perform this action."
+        return redirect_to listing_path(@listing), notice: "Sorry. You do not have the permission to edit a listing that you didn't post yourself."
+    else 
+      @listing.taggings.each do |tagging|
+        tagging.destroy
+      end
+      @listing.destroy
+      redirect_to listings_path, notice: "Your listing was successfully deleted"
     end
-    @listing.destroy
-    redirect_to listings_path, notice: "Your listing was successfully deleted"
   end
 
   private
@@ -61,5 +68,14 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:name, :description, :price, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags)
   end
+
+
+  def not_allowed?
+    current_user == nil or !(current_user.superadmin? or @listing.user == current_user)
+  end
+
+  # def authorise_user
+  #   redirect_to listing_path(@listing) if current_user == nil or !(current_user.superadmin? or @listing.user == current_user)
+  # end
 
 end
