@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except:[:index]
+  before_action :set_user, only:[:show, :edit]
 
   def index
   end

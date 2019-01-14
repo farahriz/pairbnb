@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  # mount_uploader :avatar, ImageUploader
+
+
   enum role: [ :superadmin, :moderator, :customer ]
 
   validates :email, format: {with: /@.+\...+/}
