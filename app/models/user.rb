@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  enum role: [ :superadmin, :moderator, :customer ]
+
   validates :email, format: {with: /@.+\...+/}
   validates :email, uniqueness: true
   # validates :handle, presence: true
