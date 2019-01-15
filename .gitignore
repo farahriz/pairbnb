@@ -28,3 +28,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore temporary uploads
+/public/uploads/tmp
