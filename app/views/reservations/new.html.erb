@@ -1,0 +1,10 @@
+<h1>Create reservation</h1>
+
+<%= form_with model: @reservation, local: true do |form| %>
+	<%= render partial: '/reservations/form', object: form %>
+
+	<div class="submit-field p-0 m-0">
+      <%= form.submit "Create new reservation", :class => "btn btn-outline-danger w-100"  %>
+    </div>
+
+<% end %>

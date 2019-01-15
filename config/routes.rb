@@ -16,6 +16,8 @@ root 'welcome#index'
 
   resources :listings, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
 
+  resources :reservations, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
+
   get 'tags/:tag', to: 'listings#index', as: "tag"
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

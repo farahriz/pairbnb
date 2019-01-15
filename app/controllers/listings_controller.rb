@@ -29,7 +29,8 @@ class ListingsController < ApplicationController
       redirect_to listing_path(@listing), notice: "Your listing has successfully created"
 
     else
-      redirect back
+      redirect_to '/'
+      # redirect back
       # render :new, error: "Piglet wasn't created, please try again." # Investigate getting the error messages from your object errors and sending them as a flash message!
     end
 
