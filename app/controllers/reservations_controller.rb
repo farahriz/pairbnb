@@ -19,6 +19,14 @@ class ReservationsController < ApplicationController
 
 	end	
 
+	def index
+		if current_user.superadmin?
+			@reservations = Reservation.all
+		else
+			@reservations = current_user.reservations
+		end	
+	end
+
 	private
 		def reservation_params
     		params.require(:reservation).permit(:check_in, :check_out)
