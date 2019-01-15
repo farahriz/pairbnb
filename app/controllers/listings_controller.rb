@@ -29,13 +29,15 @@ class ListingsController < ApplicationController
       redirect_to listing_path(@listing), notice: "Your listing has successfully created"
 
     else
-      redirect back
+      redirect_to '/'
+      # redirect back
       # render :new, error: "Piglet wasn't created, please try again." # Investigate getting the error messages from your object errors and sending them as a flash message!
     end
 
   end
 
-  def show    
+  def show
+    @reservations = nil || @listing.reservations    
   end
 
 
@@ -67,6 +69,10 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:name, :description, :price, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags, {avatars: []})
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:check_in, :check_out)
   end
 
 
