@@ -43,12 +43,38 @@
     <%=@listing.policy%>
   </div>
 
-    <div class="tags container">
-      <strong>Tags:</strong> <%=@listing.all_tags %>
-    </div>
+  <div class="tags container">
+    <strong>Tags:</strong> <%=@listing.all_tags %>
+  </div>
 
-<%if signed_in? && @listing.user == current_user %>
-  <%= link_to "Edit this listing", edit_listing_path(@listing), :class => "btn btn-outline-warning col-12" %>  
+<%if signed_in? %>
+
+  
+  <div class="card border-dark">
+      
+      <div class="card-header">
+        <h2>Are you interested in staying here?</h2>
+      </div>
+
+      <div class="card-body">
+
+
+      <%= form_with model: @reservation, url: reservations_path, local: true do |form| %>
+        <%= render partial: '/reservations/form', object: form %>
+
+        <div class="submit-field p-0 m-0">
+            <%= form.submit "Book this listing", :class => "btn btn-outline-danger w-100"  %>
+          </div>
+
+      <% end %>
+
+    </div> <!-- End of card body -->
+
+  </div> <!-- End of card div -->
+
+  <% if@listing.user == current_user %>
+    <%= link_to "Edit this listing", edit_listing_path(@listing), :class => "btn btn-outline-warning col-12" %>
+  <%end%>    
 <%end%>
 
 </div> <!-- End of container div -->

@@ -1,10 +1,25 @@
-<h1>Create reservation</h1>
-
-<%= form_with model: @reservation, local: true do |form| %>
-	<%= render partial: '/reservations/form', object: form %>
-
-	<div class="submit-field p-0 m-0">
-      <%= form.submit "Create new reservation", :class => "btn btn-outline-danger w-100"  %>
+<div class="container col-sm-10">
+  
+  <div class="card border-light">
+    
+    <div class="card-header">
+      <h2>Create a new reservation</h2>
     </div>
 
-<% end %>
+    <div class="card-body">
+
+
+		<%= form_with model: @reservation, local: true do |form| %>
+			<%= render partial: '/reservations/form', object: form %>
+
+			<div class="submit-field p-0 m-0">
+		      <%= form.submit "Create new reservation", :class => "btn btn-outline-danger w-100"  %>
+		    </div>
+
+		<% end %>
+
+	</div> <!-- End of card body -->
+
+  	</div> <!-- End of card div -->
+
+</div> <!-- End of container div -->
