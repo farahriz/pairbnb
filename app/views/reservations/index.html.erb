@@ -1,1 +1,14 @@
-<h1>All reservations</h1>
+<h1>My reservations</h1>
+
+<%Reservation.all.each do |r|%>
+	<h5>Listing</h5>
+	<%= r.listing.name %>
+	<h5>User</h5>
+	<%= r.user.first_name%>
+	<h5>Check In</h5>
+	<%= r.check_in%>
+	<h5>Check Out</h5>
+	<%= r.check_out %>
+	<h5>============</h5>
+
+<%end%>

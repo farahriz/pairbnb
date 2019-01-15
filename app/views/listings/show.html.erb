@@ -59,9 +59,8 @@
       <div class="card-body">
 
 
-      <%= form_with model: @reservation, url: reservations_path, local: true do |form| %>
+      <%= form_with model: @reservation, url: reservations_path(listing_id: @listing.id), local: true do |form| %>
         <%= render partial: '/reservations/form', object: form %>
-
         <div class="submit-field p-0 m-0">
             <%= form.submit "Book this listing", :class => "btn btn-outline-danger w-100"  %>
           </div>

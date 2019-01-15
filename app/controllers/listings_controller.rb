@@ -70,6 +70,10 @@ class ListingsController < ApplicationController
     params.require(:listing).permit(:name, :description, :price, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags, {avatars: []})
   end
 
+  def reservation_params
+    params.require(:reservation).permit(:check_in, :check_out)
+  end
+
 
   def not_allowed?
     current_user == nil or !(current_user.superadmin? or @listing.user == current_user)
