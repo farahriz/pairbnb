@@ -13,7 +13,6 @@ class ReservationsController < ApplicationController
 			redirect_to listing_path(@reservation.listing), notice: "Your reservation has been successfully created"
 
 		else
-			
 			redirect_to '/'
 		end
 
