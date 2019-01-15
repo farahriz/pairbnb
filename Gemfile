@@ -6,7 +6,7 @@ ruby '2.5.3'
 #Images
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'fog-aws'
 
 #Seeding
 gem 'faker'
