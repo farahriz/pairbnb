@@ -36,6 +36,13 @@ class User < ApplicationRecord
   end
 
 
+  #resize profile pictures
+  # def thumbnail
+  #   original = MiniMagick::Image.open(self.avatar.url)
+  #   result = original.resize("100x100")
+  #   return result
+  # end
+
 
 
 end

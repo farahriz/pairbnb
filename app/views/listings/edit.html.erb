@@ -8,8 +8,8 @@
 
     <div class="card-body">
 	  <%= form_with model: @listing, local: true, html: {multipart: true} do |form| %>
-	    <%= render partial: '/listings/form', object: form %>
-
+      
+      <%= render partial: '/listings/form', object: form %>
 		    <div class="submit-field p-0 m-0">
 		      <%= form.submit "Edit this listing", :class => "btn btn-outline-warning col-12"  %>
 		    </div>

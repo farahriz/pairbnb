@@ -23,9 +23,8 @@ class UsersController < ApplicationController
   end
 
   def create
-  	# byebug
     @user = User.new(user_params)
-
+    byebug
     if @user.save
       sign_in @user
       redirect_to root_path
