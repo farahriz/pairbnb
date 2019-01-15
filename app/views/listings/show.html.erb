@@ -73,6 +73,12 @@
 
   <% if@listing.user == current_user %>
     <%= link_to "Edit this listing", edit_listing_path(@listing), :class => "btn btn-outline-warning col-12" %>
+
+    <div class="container">
+      <%= render partial: "reservations/table"%>
+    </div>
+
+
   <%end%>    
 <%end%>
 

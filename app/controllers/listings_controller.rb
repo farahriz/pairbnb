@@ -36,7 +36,8 @@ class ListingsController < ApplicationController
 
   end
 
-  def show    
+  def show
+    @reservations = nil || @listing.reservations    
   end
 
 
