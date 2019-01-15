@@ -11,7 +11,7 @@
     </div>
 
     <div class="card-body">
-	  <%= form_with model: @listing, local: true do |form| %>
+	  <%= form_with model: @listing, local: true, html: {multipart: true} do |form| %>
 	    <%= render partial: '/listings/form', object: form %>
 
 		    <div class="submit-field p-0 m-0">

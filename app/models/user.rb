@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   has_many :listings
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(
       # byebug
@@ -19,6 +21,7 @@ class User < ApplicationRecord
       last_name: auth_hash["info"]["last_name"],
       handle: auth_hash["info"]["name"],
       email: auth_hash["info"]["email"],
+      email: auth_hash["info"]["image"],
       password: SecureRandom.hex(10)
     )
     user.authentications << authentication
@@ -32,6 +35,13 @@ class User < ApplicationRecord
     return x.token unless x.nil?
   end
 
+
+  #resize profile pictures
+  # def thumbnail
+  #   original = MiniMagick::Image.open(self.avatar.url)
+  #   result = original.resize("100x100")
+  #   return result
+  # end
 
 
 

@@ -21,7 +21,9 @@
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="card">
 					<div class="card-content">
-						<!-- An image would go here in an img tag -->
+						<%if list.avatars != []%>
+							<%= image_tag list.avatars[0].url.to_s, :class => "img-fluid" %>
+						<%end%>
 						<div class="card-body">
 							<h5 class="card-title">
 								<%=link_to "#{list.name}", listing_path(list) %>

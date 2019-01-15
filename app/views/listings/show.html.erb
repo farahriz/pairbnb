@@ -1,8 +1,24 @@
-<h1>Show one listing</h1>
-
-
-
 <div class="container col-sm-10">
+  <%if @listing.avatars != []%>
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag @listing.avatars[0].url.to_s, :class => "d-block w-100" %>
+      </div>
+
+      <% @listing.avatars[1..-1].each do |av|%>
+        <div class="carousel-item">
+          <%= image_tag av.url.to_s, :class => "d-block w-100" %>
+        </div>
+      <% end %>  
+     
+
+
+    </div>
+  </div>
+  <%end%>
+
+
   <div class="container">
     <h3><%=@listing.name %></h3>
     <h5><%=@listing.location%></h5>

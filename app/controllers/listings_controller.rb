@@ -66,7 +66,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :price, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags)
+    params.require(:listing).permit(:name, :description, :price, :location, :policy, :num_bedroom, :num_bed, :num_bathroom, :max_guests, :all_tags, {avatars: []})
   end
 
 
@@ -77,5 +77,6 @@ class ListingsController < ApplicationController
   # def authorise_user
   #   redirect_to listing_path(@listing) if current_user == nil or !(current_user.superadmin? or @listing.user == current_user)
   # end
+  # consider depedent:destroy
 
 end
