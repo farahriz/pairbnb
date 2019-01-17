@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 		@reservation.listing = Listing.find(params[:listing_id])
 
 		if @reservation.save
-			UserMailer.booking_email(@reservation.user, @reservation.listing.user).deliver_now
+			UserMailer.booking_email(@reservation.user, @reservation.listing.user, @reservation.listing).deliver_now
 			# BookingsJob.perform)later(@reservation.user, @booking.listing.user)
 
 			redirect_to listing_path(@reservation.listing), notice: "Your reservation has been successfully created"
