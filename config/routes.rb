@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   get 'listings/index'
   get 'listings/create'
-root 'welcome#index'
+  root 'welcome#index'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
