@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+#Mailing list
+gem "letter_opener", :group => :development
+
 #Payments
 gem 'braintree'
 
