@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
     if params[:tag]
       @listings = Listing.tagged_with(params[:tag].titleize).paginate(:page => params[:page])
     elsif params[:listing_name]
-      @listings = Listing.where('lower(name) LIKE ?', "%#{params[:listing_name].downcase}%").page(params[:page]).order('created_at DESC')
+      @listings = Listing.where('lower(name) LIKE ?', "%#{params[:listing_name].downcase.delete(" ")}%").page(params[:page]).order('created_at DESC')
     else
       @listings = Listing.page(params[:page]).order('created_at DESC')
     end
