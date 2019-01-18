@@ -3,6 +3,15 @@
 <%end%>
 
 <h1>Listings#index</h1>
+
+<div id="search-listings-display">
+	<h4>Search by listings by name</h4>
+	<%= form_with model: @listing, method: :get, local: true do |form| %>
+    <%#= render partial: '/listings/search_form', form: form %>
+    <%= render partial: '/listings/search_form', locals: {form: form} %>
+	<% end %>
+</div>
+
 <div id="top-tag-display">
 	<h5>Tags</h5>
 	<% Tag.all.each do |tag| %>
@@ -11,6 +20,9 @@
 		<%end%>
 	<% end %>
 </div>
+
+
+
 
 
 

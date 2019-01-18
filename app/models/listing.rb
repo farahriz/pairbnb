@@ -1,5 +1,6 @@
 class Listing < ApplicationRecord
-	include PgSearch
+	# include PgSearch
+	# multisearchable :against => [:name, :description]
 
 	has_many :taggings
 	has_many :tags, through: :taggings

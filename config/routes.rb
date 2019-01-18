@@ -17,7 +17,6 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-
   resources :listings, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
 
   resources :reservations, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
