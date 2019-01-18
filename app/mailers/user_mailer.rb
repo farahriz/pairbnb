@@ -6,6 +6,6 @@ class UserMailer < ApplicationMailer
     @host = host
     @user = user
     @url  = "localhost:3000/listings/#{@listing.id}"
-    mail(to: @host.email, subject: 'You got a new booking!')
+    mail(to: ENV['GMAIL_TEST'], subject: 'You got a new booking!')
   end
 end
