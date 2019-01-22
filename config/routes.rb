@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   
   root 'welcome#index'
   
-  get 'braintree/new'
-  post 'braintree/checkout'
+  # get 'braintree/new'
+  # post 'braintree/checkout'
   
   get 'listings/index'
   get 'listings/create'
@@ -19,7 +19,11 @@ Rails.application.routes.draw do
 
   resources :listings, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
 
-  resources :reservations, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
+  resources :reservations, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy] do
+    resources :braintree, only: [:new, :create]
+    # get 'braintree/new' => 'braintree#new', as: 'new_braintree'
+  end
+
 
   get 'tags/:tag', to: 'listings#index', as: "tag"
 

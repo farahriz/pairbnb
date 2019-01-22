@@ -1,1 +1,32 @@
-<h1>Single Reservation</h1>
+
+
+<div class="col-lg-4 col-md-6 col-lg-1 ">
+	<h1><%= @reservation.listing.name%></h1>
+
+    <div class="card mb-3">
+        <div class="card-header text-center bg-info">
+            Booked By : <%= @reservation.user.first_name %> <%= @reservation.user.last_name %>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+            	Booked From : <%= @reservation.check_in.to_date %>		
+            </li>
+            <li class="list-group-item">
+            	Booked To : <%= @reservation.check_out.to_date %>
+	       	</li>
+            <li class="list-group-item"> 
+            	Payment Status : <%= @reservation.status.to_s.titleize %>
+	       	</li>
+            <li class="list-group-item"> 
+            	Cost per night: $ <%= @reservation.listing.price %>
+            </li>
+            <li class="list-group-item"> 
+            	Number of nights stay: <%= (@reservation.check_out.to_date - @reservation.check_in.to_date).to_i %>
+            </li>	
+            <li class="list-group-item"> 
+            	Total cost: $ <%= ((@reservation.check_out.to_date - @reservation.check_in.to_date) * @reservation.listing.price).to_f.round(0) %>
+            </li>
+
+        </ul>
+    </div>
+</div>
