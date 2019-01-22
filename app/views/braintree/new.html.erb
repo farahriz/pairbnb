@@ -1,6 +1,6 @@
 <div class="demo-frame">
 
-	<%= form_for :checkout_form, url: braintree_checkout_path, html: {id: "cardForm"} do |form|%>
+	<%= form_for :checkout_form, url: reservation_braintree_index_path(reservation_id: @reservation.id ), html: {id: "cardForm"} do |form|%>
 
 
 		<%= form.label :card_number, "Credit Card Number", html: {class: "hoster-fields--label"} %>

@@ -27,6 +27,12 @@
             	Total cost: $ <%= ((@reservation.check_out.to_date - @reservation.check_in.to_date) * @reservation.listing.price).to_f.round(0) %>
             </li>
 
+            <% if current_user.id == @reservation.user_id  && !@reservation.status %>
+                <%= link_to "Edit Reservation", edit_reservation_path(@reservation), class: 'btn btn-outline-primary' %>
+                <%= link_to "Delete Reservation", reservation_path(@reservation), method: :delete,  class: "btn btn-outline-danger" %>
+                <%= link_to "Make Payment", new_reservation_braintree_path(@reservation), class: "btn btn-outline-success"%>
+            <% end %>
+
         </ul>
     </div>
 </div>

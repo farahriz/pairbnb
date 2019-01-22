@@ -6,7 +6,7 @@ class BraintreeController < ApplicationController
   	@client_token = Braintree::ClientToken.generate
   end
 
-  def checkout
+  def create
     nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
 
     result = Braintree::Transaction.sale(
@@ -19,9 +19,9 @@ class BraintreeController < ApplicationController
 
     if result.success?
       @reservation.update(status: true)
-      redirect_to :listing_path(id: @reservation.listing_id), :flash => { :success => "Transaction successful!" }
+      redirect_to reservation_path(@reservation), :flash => { :success => "Transaction successful!" }
     else
-      redirect_to :listing_path(id: @reservation.listing_id), :flash => { :danger => "Transaction failed. Please try again." }
+      redirect_to reservation_path(@reservation), :flash => { :danger => "Transaction failed. Please try again." }
     end
   end
 

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :listings, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy]
 
-  resources :reservations, only: [:create, :edit, :show, :update, :new, :index, :delete, :destroy] do
+  resources :reservations do
     resources :braintree, only: [:new, :create]
     # get 'braintree/new' => 'braintree#new', as: 'new_braintree'
   end
