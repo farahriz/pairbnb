@@ -1,4 +1,15 @@
-<div>
-    <%= form.label :listing_name %>
-    <%= form.text_field :listing_name %>
+<div class="form mb-3">
+    <%= form.text_field :listing_name, placeholder: "Listing Name", class: "form-control mr-2", list: "list_name" %>
+    <%= form.text_field :description, placeholder: "Any text in description", class: "form-control mr-2", list: "list_country"  %>
+    <div class="form-inline mb-3">    	
+	    <%= form.label :price_range %>
+	    <%= form.text_field :min_price, placeholder: "Min Price" , class: "form-control mr-2" %>
+	    to
+	    <%= form.text_field :max_price, placeholder: "Max Price", class: "form-control mr-2"  %>
+    </div>
+    <%= form.submit "Search", class: "btn btn-outline-danger" %>
 </div>
+
+<datalist id="list_name"></datalist>
+
+<datalist id="list_country"></datalist>

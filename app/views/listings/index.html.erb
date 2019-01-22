@@ -1,11 +1,11 @@
+<h1>Adventure Awaits</h1>
+
 <%if signed_in?%>
 	<%= link_to "Create new listing", new_listing_path, :class => "btn btn-outline-warning p-1 col-12" %>
 <%end%>
 
-<h1>Listings#index</h1>
-
 <div id="search-listings-display">
-	<h4>Search by listings by name</h4>
+	<h4>Search listings</h4>
 	<%= form_with model: @listing, method: :get, local: true do |form| %>
     	<%#= render partial: '/listings/search_form', form: form %>
     	<%= render partial: '/listings/search_form', locals: {form: form} %>
