@@ -2,11 +2,25 @@ class ListingsController < ApplicationController
   before_action :set_listing, only:[:edit, :update, :delete, :destroy, :show]
 
   def index
-    if params[:tag]
+    @listings = Listing.all.page(params[:page]).order('created_at DESC')
+    @listings = @listings.listing_name(params[:listing_name].strip).page(params[:page]).order('created_at DESC') if params[:listing_name].present?
+    @listings = @listings.descrip(params[:description].strip).page(params[:page]).order('created_at DESC') if params[:description].present?
+
+    if params[:min_price].present? && params[:max_price].present?
+        @listings = @listings.price(params[:min_price], params[:max_price]).page(params[:page]).order('created_at DESC') 
+    elsif params[:min_price].present?
+        @listings = @listings.where("price > #{params[:min_price]}").page(params[:page]).order('created_at DESC')
+    elsif params[:max_price].present?
+        @listings = @listings.where("price < #{params[:max_price]}").page(params[:page]).order('created_at DESC')    
+    elsif params[:tag]
       @listings = Listing.tagged_with(params[:tag].titleize).paginate(:page => params[:page])
-    else
-      @listings = Listing.page(params[:page]).order('created_at DESC')
     end
+    
+    # elsif params[:listing_name]
+    #   @listings = Listing.where('lower(name) LIKE ?', "%#{params[:listing_name].downcase.delete(" ")}%").page(params[:page]).order('created_at DESC')
+
+
+
 
   end
 

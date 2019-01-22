@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+
+#Search
+gem 'pg_search'
+
 #Mailing list
 gem "letter_opener", :group => :development
 

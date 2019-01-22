@@ -1,4 +1,7 @@
 class Listing < ApplicationRecord
+	# include PgSearch
+	# multisearchable :against => [:name, :description]
+
 	has_many :taggings
 	has_many :tags, through: :taggings
 
@@ -7,6 +10,10 @@ class Listing < ApplicationRecord
 	has_many :reservations
 
 	mount_uploaders :avatars, AvatarUploader
+
+	scope :listing_name, -> (listing_name) { where("name ILIKE ?" , "%#{listing_name}%")   }
+    scope :descrip, -> (description) { where("description ILIKE ?", "%#{description}%" ) }
+    scope :price, -> (min_price, max_price) { where("price BETWEEN ? and ?", min_price, max_price ) }
 
 	#Helper functions to extract tags from form
 	def all_tags=(names)
