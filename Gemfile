@@ -4,8 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 
-#Search
+
+#Others
 gem 'pg_search'
+gem 'rails_12factor'
 
 #Mailing list
 gem "letter_opener", :group => :development
