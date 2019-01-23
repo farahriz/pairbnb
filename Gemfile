@@ -7,7 +7,6 @@ ruby '2.5.3'
 
 #Others
 gem 'pg_search'
-gem 'rails_12factor'
 
 #Mailing list
 gem "letter_opener", :group => :development
