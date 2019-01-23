@@ -22,7 +22,7 @@ class User < ApplicationRecord
       last_name: auth_hash["info"]["last_name"],
       handle: auth_hash["info"]["name"],
       email: auth_hash["info"]["email"],
-      email: auth_hash["info"]["image"],
+      avatar: auth_hash["info"]["image"],
       password: SecureRandom.hex(10)
     )
     user.authentications << authentication
