@@ -10,7 +10,7 @@ class BraintreeController < ApplicationController
     nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
 
     result = Braintree::Transaction.sale(
-     :amount => "10.00", #this is currently hardcoded
+     :amount => ((@reservation.check_out.to_date - @reservation.check_in.to_date) * @reservation.listing.price).to_f.round(0),
      :payment_method_nonce => nonce_from_the_client,
      :options => {
         :submit_for_settlement => true
